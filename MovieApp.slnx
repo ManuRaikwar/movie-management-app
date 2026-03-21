@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/API/">
+    <Project Path="API/MovieAccess.DataAccess/MovieAccess.DataAccess.csproj" Id="156fbaab-1553-4dbe-85c6-7f44e9c60008" />
+    <Project Path="API/MovieApp.Services/MovieApp.Services.csproj" Id="6d9384e6-5dd7-4f18-905a-20c7ac3b9c3c" />
+    <Project Path="API/MovieApp/MovieApp.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="README.md" />
+  </Folder>
+</Solution>

@@ -2,3 +2,13 @@
 /MovieApp/.vs
 /MovieApp/obj
 /MovieApp/MovieApp.csproj.user
+/API/MovieApp/MovieApp.csproj.user
+/API/MovieApp/.vs
+/API/MovieApp/bin/Debug/net10.0
+/API/MovieAccess.DataAccess/obj
+/API/MovieApp.Services/bin/Debug/net10.0
+/API/MovieApp.Services/obj/Debug/net10.0
+/API/MovieApp.Services/obj/Release/net10.0
+/API/MovieApp.Services/obj
+/API/MovieApp/obj
+/API/MovieAccess.DataAccess/bin/Debug/net10.0
