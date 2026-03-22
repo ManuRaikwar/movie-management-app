@@ -12,3 +12,6 @@
 /API/MovieApp.Services/obj
 /API/MovieApp/obj
 /API/MovieAccess.DataAccess/bin/Debug/net10.0
+/movie-management-ui/.vscode
+/movie-management-ui/public/favicon.ico
+/movie-management-ui/package-lock.json
