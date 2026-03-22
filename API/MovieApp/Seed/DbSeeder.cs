@@ -1,6 +1,6 @@
 ﻿using MovieAccess.DataAccess.Data;
 using MovieAccess.DataAccess.Models;
-using MovieApp.DTOs;
+using MovieApp.Services.DTOs;
 using System.Text.Json;
 
 public class DbSeeder

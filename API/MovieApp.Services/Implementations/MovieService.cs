@@ -1,33 +1,78 @@
-﻿using MovieAccess.DataAccess.Models;
+﻿using AutoMapper;
+using MovieAccess.DataAccess.Interfaces;
+using MovieAccess.DataAccess.Models;
+using MovieApp.Services.DTOs;
 using MovieApp.Services.Interfaces;
 
 namespace MovieApp.Services.Implementations
 {
     public class MovieService : IMovieService
-    {      
-        public async Task<List<Movie>> GetAllMoviesAsync()
+    {
+        private readonly IMovieRepository _movieRepository;
+        private readonly IMapper _mapper;
+
+        public MovieService(IMovieRepository movieRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _movieRepository = movieRepository;
+            _mapper = mapper;
         }
 
-        public async Task<Movie> GetMovieByIdAsync(int id)
+        public async Task<List<MovieDto>> GetLatestMoviesAsync(int count)
         {
-            throw new NotImplementedException();
+           var movies = await _movieRepository.GetAllAsync();
+
+           var latestMovies = movies.OrderByDescending(m => m.ReleaseDate)
+                .Take(count).ToList();
+
+        return _mapper.Map<List<MovieDto>>(latestMovies);
         }
 
-        public async Task AddMovieAsync(Movie movie)
+        public async Task<List<MovieDto>> GetAllMoviesAsync()
         {
-            throw new NotImplementedException();
+            var movies = await _movieRepository.GetAllAsync();
+            return _mapper.Map<List<MovieDto>>(movies);
         }
 
-        public async Task UpdateMovieAsync(Movie movie)
+        public async Task<MovieDto?> GetMovieByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var movie = await _movieRepository.GetByIdAsync(id);
+            return movie == null ? null : _mapper.Map<MovieDto>(movie);
+        }
+
+        public async Task AddMovieAsync(MovieCreateDto movieDto)
+        {
+            var movie = _mapper.Map<Movie>(movieDto);
+            await _movieRepository.AddAsync(movie);
+        }
+
+        public async Task<bool> UpdateMovieAsync(MovieUpdateDto movieDto)
+        {
+            var existing = await _movieRepository.GetByIdAsync(movieDto.Id);
+
+            if (existing == null)
+                return false;
+
+            var movie = _mapper.Map<Movie>(movieDto);
+            await _movieRepository.UpdateAsync(movie);
+            return true;
         }       
 
-        public async Task DeletMovieAsync(int id)
+        public async Task<bool> DeleteMovieAsync(int id)
         {
-            throw new NotImplementedException();
+            var existing = await _movieRepository.GetByIdAsync(id);
+
+            if (existing == null)
+                return false;
+
+            await _movieRepository.DeleteByIdAsync(id);
+            return true;
         }
+
+        public async Task<List<MovieDto>> SearchMoviesAsync(string searchBy, string value)
+        {
+            var searchedMovies = await _movieRepository.SearchAsync(searchBy, value);
+            return _mapper.Map<List<MovieDto>>(searchedMovies);
+        }
+
     }
 }

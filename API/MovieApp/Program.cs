@@ -2,8 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using MovieAccess.DataAccess.Data;
 using MovieAccess.DataAccess.Interfaces;
 using MovieAccess.DataAccess.Repositories;
+using MovieApp.Services;
 using MovieApp.Services.Implementations;
 using MovieApp.Services.Interfaces;
+using AutoMapper;
 
 public partial class Program
 {
@@ -22,6 +24,8 @@ public partial class Program
 
         builder.Services.AddScoped<IMovieRepository, MovieRepository>();
         builder.Services.AddScoped<IMovieService, MovieService>();
+
+        builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
         var app = builder.Build();

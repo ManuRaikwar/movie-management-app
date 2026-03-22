@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace MovieApp.DTOs
+namespace MovieApp.Services.DTOs
 {
     public class MovieSeedDTO
     {
