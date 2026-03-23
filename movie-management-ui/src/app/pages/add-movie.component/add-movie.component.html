@@ -1,0 +1,35 @@
+<div class="container mt-4">
+
+  <h2 class="page-title">Add New Movie</h2>
+
+  <div class="form-card">
+
+    <input [(ngModel)]="movie.title" class="form-control mb-2" placeholder="Title">
+
+    <input [(ngModel)]="movie.directors" class="form-control mb-2" placeholder="Director">
+
+    <input [(ngModel)]="movie.actors" class="form-control mb-2" placeholder="Actors">
+
+    <select [(ngModel)]="selectedGenre" class="form-control mb-2">
+            <option value="">Select Genre</option>
+            <option *ngFor="let genre of genres" [value]="genre">
+              {{ genre }}
+            </option>
+    </select>
+
+    <input type="number" [(ngModel)]="movie.rating" class="form-control mb-2" placeholder="Rating">
+
+    <input type="date" [(ngModel)]="movie.releaseDate" class="form-control mb-2">
+
+    <input type="number" [(ngModel)]="movie.runningTimeSecs" class="form-control mb-2" placeholder="Running Time (secs)">
+
+    <!-- <input [(ngModel)]="movie.imageUrl" class="form-control mb-2" placeholder="Image URL"> -->
+
+    <!-- Submit -->
+    <button class="btn btn-success w-100 mt-2" (click)="addMovie()">
+      Add Movie
+    </button>
+
+  </div>
+
+</div>

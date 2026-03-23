@@ -52,8 +52,8 @@ namespace MovieApp.Services.Implementations
             if (existing == null)
                 return false;
 
-            var movie = _mapper.Map<Movie>(movieDto);
-            await _movieRepository.UpdateAsync(movie);
+            _mapper.Map(movieDto, existing);
+            await _movieRepository.UpdateAsync(existing);
             return true;
         }       
 

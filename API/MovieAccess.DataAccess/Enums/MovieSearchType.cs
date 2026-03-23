@@ -7,7 +7,7 @@ namespace MovieAccess.DataAccess.Enums
     public enum MovieSearchType
     {
         Title,
-        Genre,
+        Genres,
         Year
     }
 }

@@ -16,8 +16,10 @@ public partial class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
-        builder.Services.AddOpenApi();
+        //builder.Services.AddOpenApi();
 
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -27,13 +29,24 @@ public partial class Program
 
         builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                policy => policy.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
+        });
+
+        
 
         var app = builder.Build();
 
 
         if (app.Environment.IsDevelopment())
         {
-            app.MapOpenApi();
+            // app.MapOpenApi();
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
 
         app.UseHttpsRedirection();
@@ -49,6 +62,11 @@ public partial class Program
             await context.Database.MigrateAsync();
             await DbSeeder.SeedAsync(context);
         }
+
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
+        app.UseCors("AllowAll");
 
         app.Run();
     }

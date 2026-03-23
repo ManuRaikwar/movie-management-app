@@ -1,0 +1,38 @@
+<div class="container mt-4" *ngIf="movie">
+
+  <div class="details-card">
+
+    <!-- Image -->
+    <!-- <img [src]="movie.imageUrl" class="details-img"> -->
+
+    <div class="details-body">
+
+      <div *ngIf="!isEditMode">
+        <h2>{{ movie.title }}</h2>
+      </div>
+
+      <input *ngIf="isEditMode" [(ngModel)]="movie.title" class="form-control mb-2">
+
+      <p *ngIf="!isEditMode"><strong>Director:</strong> {{ movie.directors }}</p>
+      <input *ngIf="isEditMode" [(ngModel)]="movie.directors" class="form-control mb-2">
+
+      <p *ngIf="!isEditMode"><strong>Actors:</strong> {{ movie.actors }}</p>
+      <input *ngIf="isEditMode" [(ngModel)]="movie.actors" class="form-control mb-2">
+
+      <p *ngIf="!isEditMode"><strong>Genre:</strong> {{ movie.genres }}</p>
+      <input *ngIf="isEditMode" [(ngModel)]="movie.genres" class="form-control mb-2">
+
+      <p *ngIf="!isEditMode"><strong>Rating:</strong> {{ movie.rating }}</p>
+      <input *ngIf="isEditMode" type="number" [(ngModel)]="movie.rating" class="form-control mb-2">
+
+      <!-- Buttons -->
+      <div class="btn-group mt-3">
+        <button *ngIf="!isEditMode" class="btn btn-primary" (click)="enableEdit()"> Edit </button>
+        <button *ngIf="isEditMode" class="btn btn-success" (click)="updateMovie()"> Save </button>
+        <button class="btn btn-danger" (click)="deleteMovie()"> Delete </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

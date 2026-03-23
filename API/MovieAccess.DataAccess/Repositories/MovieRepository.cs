@@ -55,7 +55,7 @@ namespace MovieAccess.DataAccess.Repositories
             if (searchBy.Equals(MovieSearchType.Title.ToString(), StringComparison.OrdinalIgnoreCase))
                 query = query.Where(m => m.Title.ToLower().Contains(value.ToLower()));
 
-            if (searchBy.Equals(MovieSearchType.Genre.ToString(), StringComparison.OrdinalIgnoreCase))
+            if (searchBy.Equals(MovieSearchType.Genres.ToString(), StringComparison.OrdinalIgnoreCase))
                 query = query.Where(m => m.Genres.ToLower().Contains(value.ToLower()));
 
             if (searchBy.Equals(MovieSearchType.Year.ToString(), StringComparison.OrdinalIgnoreCase) && int.TryParse(value, out int year))

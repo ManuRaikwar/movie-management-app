@@ -12,6 +12,7 @@ namespace MovieApp.Services.DTOs
         public string ReleaseDate { get; set; } = string.Empty;
         public double Rating { get; set; }
         public string Genres { get; set; } = string.Empty;
+        [JsonPropertyName("Image URL")]
         public string? ImageUrl { get; set; }
         public string? Plot { get; set; } 
         public int Rank { get; set; }

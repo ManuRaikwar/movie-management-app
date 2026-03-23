@@ -8,6 +8,8 @@ namespace MovieApp.Services
     {
         public MappingProfile()
         {
+            CreateMap<Movie, MovieDto>();
+
             CreateMap<MovieCreateDto, Movie>()
                 .ForMember(dest => dest.RunningTime, opt => opt.MapFrom(src => TimeSpan.FromSeconds(src.RunningTime)));
 
