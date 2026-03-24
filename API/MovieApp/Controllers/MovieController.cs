@@ -18,21 +18,21 @@ namespace MovieApp.Controllers
         }
 
         [HttpGet("latest")]
-        public async Task<IActionResult> GetLatestMovies([FromQuery] int count)
+        public async Task<IActionResult> GetLatestMoviesAsync([FromQuery] int count)
         {
             var latestMovies = await _movieService.GetLatestMoviesAsync(count);
             return Ok(latestMovies);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllMovies()
+        public async Task<IActionResult> GetAllMoviesAsync()
         {
             var movies = await _movieService.GetAllMoviesAsync();
             return Ok(movies);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMovie(int id)
+        public async Task<IActionResult> GetMovieAsync(int id)
         {
             var movie = await _movieService.GetMovieByIdAsync(id);
             if (movie == null) 
@@ -42,7 +42,7 @@ namespace MovieApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddMovie([FromBody] MovieCreateDto movie)
+        public async Task<IActionResult> AddMovieAsync([FromBody] MovieCreateDto movie)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -54,7 +54,7 @@ namespace MovieApp.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateMovie(int id, [FromBody] MovieUpdateDto movie)
+        public async Task<IActionResult> UpdateMovieAsync(int id, [FromBody] MovieUpdateDto movie)
         {
             if (id != movie.Id) 
                 return BadRequest();
@@ -68,7 +68,7 @@ namespace MovieApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMovie(int id)
+        public async Task<IActionResult> DeleteMovieAsync(int id)
         {
             var deleted = await _movieService.DeleteMovieAsync(id);
 
@@ -78,7 +78,7 @@ namespace MovieApp.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchMovies([FromQuery] string searchBy, [FromQuery] string value)
+        public async Task<IActionResult> SearchMoviesAsync([FromQuery] string searchBy, [FromQuery] string value)
         {
             var movies = await _movieService.SearchMoviesAsync(searchBy, value);
             return Ok(movies);

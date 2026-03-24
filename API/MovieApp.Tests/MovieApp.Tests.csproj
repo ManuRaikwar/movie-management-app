@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MovieAccess.DataAccess\MovieAccess.DataAccess.csproj" />
     <ProjectReference Include="..\MovieApp.Services\MovieApp.Services.csproj" />
+    <ProjectReference Include="..\MovieApp\MovieApp.csproj" />
   </ItemGroup>
 
 </Project>
