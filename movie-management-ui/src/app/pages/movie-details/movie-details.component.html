@@ -3,7 +3,7 @@
   <div class="details-card">
 
     <!-- Image -->
-    <!-- <img [src]="movie.imageUrl" class="details-img"> -->
+    <img [src]="movie.imageUrl" class="details-img">
 
     <div class="details-body">
 
@@ -11,19 +11,35 @@
         <h2>{{ movie.title }}</h2>
       </div>
 
-      <input *ngIf="isEditMode" [(ngModel)]="movie.title" class="form-control mb-2">
-
-      <p *ngIf="!isEditMode"><strong>Director:</strong> {{ movie.directors }}</p>
-      <input *ngIf="isEditMode" [(ngModel)]="movie.directors" class="form-control mb-2">
-
-      <p *ngIf="!isEditMode"><strong>Actors:</strong> {{ movie.actors }}</p>
-      <input *ngIf="isEditMode" [(ngModel)]="movie.actors" class="form-control mb-2">
-
-      <p *ngIf="!isEditMode"><strong>Genre:</strong> {{ movie.genres }}</p>
-      <input *ngIf="isEditMode" [(ngModel)]="movie.genres" class="form-control mb-2">
-
-      <p *ngIf="!isEditMode"><strong>Rating:</strong> {{ movie.rating }}</p>
-      <input *ngIf="isEditMode" type="number" [(ngModel)]="movie.rating" class="form-control mb-2">
+   <p *ngIf="!isEditMode"><strong>Title:</strong> {{ movie.title }}</p>
+   <div *ngIf="isEditMode">
+     <label><strong>Title:</strong></label>
+     <input [(ngModel)]="movie.title" class="form-control mb-2">
+   </div>
+   
+   <p *ngIf="!isEditMode"><strong>Director:</strong> {{ movie.directors }}</p>
+   <div *ngIf="isEditMode">
+     <label><strong>Director:</strong></label>
+     <input [(ngModel)]="movie.directors" class="form-control mb-2">
+   </div>
+   
+   <p *ngIf="!isEditMode"><strong>Actors:</strong> {{ movie.actors }}</p>
+   <div *ngIf="isEditMode">
+     <label><strong>Actors:</strong></label>
+     <input [(ngModel)]="movie.actors" class="form-control mb-2">
+   </div>
+   
+   <p *ngIf="!isEditMode"><strong>Genre:</strong> {{ movie.genres }}</p>
+   <div *ngIf="isEditMode">
+     <label><strong>Genre:</strong></label>
+     <input [(ngModel)]="movie.genres" class="form-control mb-2">
+   </div>
+   
+   <p *ngIf="!isEditMode"><strong>Rating:</strong> {{ movie.rating }}</p>
+   <div *ngIf="isEditMode">
+     <label><strong>Rating:</strong></label>
+     <input type="number" [(ngModel)]="movie.rating" class="form-control mb-2">
+   </div>
 
       <!-- Buttons -->
       <div class="btn-group mt-3">

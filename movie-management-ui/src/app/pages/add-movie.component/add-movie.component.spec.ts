@@ -1,22 +1,48 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AddMovieComponent } from './add-movie.component';
-
+import { MovieService } from '../../services/movie';
+import { ToastService } from '../../services/toast.service';
+import { of } from 'rxjs';
+  
 describe('AddMovieComponent', () => {
   let component: AddMovieComponent;
-  let fixture: ComponentFixture<AddMovieComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  const movieServiceMock = {
+    addMovie: () => of({})
+  };
+
+  const toastServiceMock = {
+    show: () => {}
+  };
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [AddMovieComponent],
-    }).compileComponents();
+      providers: [
+        { provide: MovieService, useValue: movieServiceMock },
+        { provide: ToastService, useValue: toastServiceMock }
+      ]
+    });
 
-    fixture = TestBed.createComponent(AddMovieComponent);
+    const fixture = TestBed.createComponent(AddMovieComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should call addMovie', () => {
+    component.movie = {
+      id: 0,
+      title: 'Test',
+      directors: '',
+      actors: '',
+      genres: '',
+      rating: 0,
+      imageUrl: '',
+      releaseDate: '',
+      runningTimeSecs: 0
+    };
+
+    component.addMovie();
+
+    expect(component).toBeTruthy(); // basic test
   });
 });

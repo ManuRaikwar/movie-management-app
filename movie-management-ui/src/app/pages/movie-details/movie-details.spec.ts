@@ -1,19 +1,32 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MovieDetailsComponent } from './movie-details.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { MovieService } from '../../services/movie';
 
-import { MovieDetails } from './movie-details';
+describe('MovieDetailsComponent', () => {
+  let component: MovieDetailsComponent;
+  let fixture: ComponentFixture<MovieDetailsComponent>;
 
-describe('MovieDetails', () => {
-  let component: MovieDetails;
-  let fixture: ComponentFixture<MovieDetails>;
+  const mockActivatedRoute = {
+    snapshot: {
+      paramMap: {
+        get: (key: string) => '1' // fake movie id
+      }
+    }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieDetails],
+      imports: [MovieDetailsComponent], 
+      providers: [
+        { provide: ActivatedRoute, useValue: mockActivatedRoute }, 
+      ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MovieDetails);
+    fixture = TestBed.createComponent(MovieDetailsComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges(); 
   });
 
   it('should create', () => {

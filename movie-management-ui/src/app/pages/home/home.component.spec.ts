@@ -1,19 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { MovieService } from '../../services/movie';
+import { Movie } from '../../models/movie.model';
 
-import { Home } from './home';
+import { HomeComponent } from './home.component';
 
 describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+  let component: HomeComponent;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Home],
-    }).compileComponents();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [MovieService]
+    });
 
-    fixture = TestBed.createComponent(Home);
+    const fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
-    await fixture.whenStable();
   });
 
   it('should create', () => {
