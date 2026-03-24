@@ -2,6 +2,7 @@
   <Folder Name="/API/">
     <Project Path="API/MovieAccess.DataAccess/MovieAccess.DataAccess.csproj" Id="156fbaab-1553-4dbe-85c6-7f44e9c60008" />
     <Project Path="API/MovieApp.Services/MovieApp.Services.csproj" Id="6d9384e6-5dd7-4f18-905a-20c7ac3b9c3c" />
+    <Project Path="API/MovieApp.Tests/MovieApp.Tests.csproj" Id="cf984fb3-5c56-468a-92a6-a122d923a41d" />
     <Project Path="API/MovieApp/MovieApp.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">

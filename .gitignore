@@ -15,3 +15,5 @@
 /movie-management-ui/.vscode
 /movie-management-ui/public/favicon.ico
 /movie-management-ui/package-lock.json
+/API/MovieApp.Tests/bin/Debug/net10.0
+/API/MovieApp.Tests/obj
