@@ -13,5 +13,6 @@ namespace MovieApp.Services.DTOs
         public DateTime ReleaseDate { get; set; }
         public double Rating { get; set; }
         public string Genres { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty;
     }
 }

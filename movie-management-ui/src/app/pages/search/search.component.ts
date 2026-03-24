@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MovieService } from '../../services/movie';
 import { RouterModule } from '@angular/router';
 import { Movie } from '../../models/movie.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -15,16 +16,13 @@ export class SearchComponent {
 
   searchBy: string = 'Title';
   value: string = '';
-  movies: Movie[] = [];
+  movies$!: Observable<Movie[]>;
 
   constructor(private movieService: MovieService) {}
 
   search() {
     if (!this.value) return;
 
-    this.movieService.searchMovies(this.searchBy, this.value)
-      .subscribe((res: any) => {
-        this.movies = res;
-      });
+    this.movies$ = this.movieService.searchMovies(this.searchBy, this.value);      
   }
 }

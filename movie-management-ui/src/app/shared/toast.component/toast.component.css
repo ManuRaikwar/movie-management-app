@@ -1,22 +1,26 @@
 .toast-container {
+  min-width: 300px;
+  min-height: 150px;
+  max-width: 500px;
+  font-size: 25px;
+  align-items: center;
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   z-index: 9999;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  pointer-events: none;
 }
 
-.toast {
+.toast-container .toast {
   padding: 10px 20px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  border-radius: 500px;
   color: white;
-  font-weight: 500;
+  pointer-events: auto; 
+  min-width: 200px;
 }
 
-.toast.success {
-  background-color: green;
-}
-
-.toast.error {
-  background-color: red;
-}
+.success { background-color: rgb(83, 177, 83); }
+.error { background-color: rgb(202, 59, 59); }
