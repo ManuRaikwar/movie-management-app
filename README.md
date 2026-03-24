@@ -58,9 +58,9 @@ https://localhost:44385/swagger
 * Get all movies
 * Get latest movies
 * Get movie by ID
-* Add movie (Admin only)
-* Update movie (Admin only)
-* Delete movie (Admin only)
+* Add movie
+* Update movie
+* Delete movie
 * Search movies (by title / genre / year)
 
 ## Testing
